@@ -1,19 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hellos Vue 3 + Vite" />
+  <div class="text-gray-700">
+    <zb-dns-form classes="px-2">
+      <zb-input-text label="Hostname"/>
+      <zb-select label="Domain" :options="state.domains"/>
+    </zb-dns-form>
+  </div>
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
+  import { reactive } from 'vue'
+  import ZbDnsForm from './components/Form.vue'
+  import ZbInputText from './components/InputText.vue'
+  import ZbSelect from './components/Select.vue'
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  const state = reactive({
+    domains: [
+      '.google.com',
+      '.facebook.com'
+    ]
+  })
+
+</script>
